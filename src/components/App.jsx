@@ -41,10 +41,11 @@ export class App extends Component {
       <>
         <Section title="Please leave feedback" children={this.children}>
           <FeedbackOptions
-            options={this.state}
+            options={['good', 'neutral', 'bad']}
             onLeaveFeedback={this.handleClick}
           />
         </Section>
+
         <Section title="Statistics" children={this.children}>
           {allParamsAreZero ? (
             <Notification message="There is no feedback" />
