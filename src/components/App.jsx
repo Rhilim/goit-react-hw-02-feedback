@@ -21,15 +21,17 @@ export class App extends Component {
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
-    const stateSum = this.state.good + this.state.neutral + this.state.bad;
-    if (stateSum === 0) {
+    if (this.countTotalFeedback() === 0) {
       return 0;
     }
-    return Number((this.state.good / stateSum) * 100).toFixed(0);
+    return Number((this.state.good / this.countTotalFeedback()) * 100).toFixed(
+      0
+    );
   };
 
   render() {
